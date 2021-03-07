@@ -1,14 +1,20 @@
-
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
+import React from 'react'
 
 const name = 'tHyt-lab'
 export const siteTitle = 'Next.js Sample Website'
 
-function Layout({children, home}) {
+export default function Layout({
+  children,
+  home,
+}: {
+  children: React.ReactNode
+  home?: boolean
+}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -19,7 +25,9 @@ function Layout({children, home}) {
         />
         <meta
           property="og:image"
-          content={`https://og-image.now.sh/${encodeURI(siteTitle)}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+          content={`https://og-image.now.sh/${encodeURI(
+            siteTitle
+          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
         <meta name="og:image" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
@@ -28,8 +36,9 @@ function Layout({children, home}) {
         {home ? (
           <>
             <Image
-              src={'/images/profile.jpg'}
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
+              priority
+              src="/images/profile.jpg"
+              className={utilStyles.borderCircle}
               alt={name}
               width={144}
               height={144}
@@ -41,8 +50,9 @@ function Layout({children, home}) {
             <Link href="/">
               <a>
                 <Image
-                  src={'/images/profile.jpg'}
-                  className={`${styles.headerImage} ${utilStyles.borderCircle}`}
+                  priority
+                  src="/images/profile.jpg"
+                  className={utilStyles.borderCircle}
                   alt={name}
                   width={144}
                   height={144}
@@ -68,5 +78,3 @@ function Layout({children, home}) {
     </div>
   )
 }
-
-export default Layout
