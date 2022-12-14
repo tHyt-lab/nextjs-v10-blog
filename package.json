@@ -18,7 +18,7 @@
     "remark-html": "^15.0.1"
   },
   "devDependencies": {
-    "@types/node": "^18.7.18",
+    "@types/node": "^18.11.15",
     "husky": "^8.0.1",
     "prettier": "^2.7.1",
     "lint-staged": "^13.0.3",
